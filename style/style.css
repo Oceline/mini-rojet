@@ -1,0 +1,18 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: blue
+}
+
+form{
+    display: grid;
+    ;
+}
+
+label{
+    font-size: 30px;
+    font-weight: 400;
+    color: aliceblue;
+}
