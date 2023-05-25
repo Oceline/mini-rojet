@@ -1,19 +1,28 @@
 <?php
-     $nom=$_POST['lastname'];
-     $prenom=$_POST['firstname'];
-     $birthday=$_POST['birthday'];
 
      require'connexion.php';
-    
-     $requete="INSERT INTO `inscrition`(nom,prénom,date_de_naissance) VALUES('$nom', '$prenom','$birthday')";
-     $query=mysqli_query($conn, $requete);
-     if(isset($query)){
-        echo "Insertion réussie";
+     if(isset($_POST['envoyer'])){
+     $nom=$_POST['nom'];
+     $prenom=$_POST['prenom'];
+     $date_naissance=$_POST['date_naissance'];
+     $genre=$_POST['genre'];
+     $inscription=$_POST['inscription'];
+     $person_besoin=$_POST['urgence_person'];
+     $sql= "INSERT INTO etudiants(nom,prenom,date_naissance,genre,inscription,person_besoin) VALUES (:nom,:prenom,:date_naissance,:genre,:inscription,:person_besoin)";
+     $requete=$conn->prepare($sql);
+     $requete->bindParam(':nom',$nom);
+     $requete->bindParam(':prenom',$prenom);
+     $requete->bindParam(':date_naissance',$date_naissance);
+     $requete->bindParam(':genre',$genre);
+     $requete->bindParam(':inscription',$inscription);
+     $requete->bindParam(':person_besoin',$person_besoin);
+     try {
+      $requete->execute();
+      echo "Congratulations successful registration";
+   }
+     catch(PDOException $e){
+      echo "Erreur : " . $e->getMessage();
      }
-     else{
-        echo "Error d'insertion";
-     }
-     if($nom&&$prenom&&$birthday){
-       echo "veuillez inserer tous les champs"
-     }
-    ?>
+}
+     ?>
+

@@ -1,4 +1,55 @@
 <?php
-//On établit la connexion
-    $conn = mysqli_connect("localhost","root","","formulaire");        
+            $servername = 'localhost';
+            $username = 'root';
+            $password = '';                    
+            $conn = new PDO("mysql:host=$servername;dbname=exercice", $username, $password);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
